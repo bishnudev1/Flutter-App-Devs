@@ -37,6 +37,9 @@ class Hello extends StatelessWidget {
 }
 ```
 ## Day 2 - Creating Home Page
+- Scaffold : It's a Container of Flutter which wrap the container just like MaterialApp or Material but it contents essential components like Appbar, Drawer, Footer etc.
+- Drawer : Creates a three-dot navbar automatically
+- Appbar : Creates a status-bar automatically
 ```bash
 import 'package:flutter/material.dart';
 
