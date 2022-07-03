@@ -11,6 +11,15 @@
 - Install ```Flutter``` extension in VS Code/Extension
 - Open Terminal & initialize ```flutter doctor``` & check the needs
 
+### Setup Android SDK without Android Studio
+- Install Android Command Line Tools https://developer.android.com/studio#downloads
+- Extract to C:\Android
+- Open Terminal & initialize ```sdkmanager.bat "build-tools;28.0.3" --sdk_root=../```
+- Initialize ```sdkmanager.bat "platforms;android-30" --sdk_root=../```
+- Copy Android Folder Path & Set it to Enviroment Variables
+- Run Terminal & initialize ```flutter doctor --android-licenses```
+
+
 ### Hello World App
 - Open VS Code
 - Open Command Palate ```Ctrl+Shift+p```
@@ -66,6 +75,4 @@ class Home extends StatelessWidget {
     );
   }
 }
-
-
 ```
