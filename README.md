@@ -1,7 +1,7 @@
 # Flutter-App-Devs
 30 Days of Flutter App Development By Bishnudev Khutia
 
-## Day 1
+## Day 1 - Introduction
 
 ### Windows Installation
 - Install Git https://git-scm.com/downloads
@@ -36,4 +36,33 @@ class Hello extends StatelessWidget {
   }
 }
 ```
-## Day 2
+## Day 2 - Creating Home Page
+```bash
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(Home());
+}
+
+class Home extends StatelessWidget {
+  final name = "Bishnudev Khutia";
+  final roll = 20;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Home Page"),
+      ),
+      body: Center(
+        child: Container(
+          child: Text("Name : ${name} Roll : ${roll}"),
+        ),
+      ),
+      drawer: Drawer(),
+    );
+  }
+}
+
+
+```
