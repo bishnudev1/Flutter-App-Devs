@@ -152,4 +152,16 @@ class HelloWorld extends StatelessWidget {
 }
 
 ```
-### Routes
+### Text
+- Styling Text
+- It takes one props called TextStyle()
+```bash
+        title: Text(
+          "Home Page",
+          style: TextStyle(
+<!--             fontSize: 20, -->
+            color: Colors.pink,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+```
