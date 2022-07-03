@@ -100,5 +100,56 @@ class BasicFunc extends StatelessWidget {
     print(name);
   }
 }
+```
+### Dark & Light Themes
+- To apply Dark Theme
+```bash
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+```
+- To apply Light Theme
+```bash
+      theme: ThemeData(
+        brightness: Brightness.light,
+      ),
+```
+- Auto Dark-Light Switcher
+```bash
+themeMode: ThemeMode.system,
+```
+- Change Color of Status Bar
+```bash
+primarySwatch: Colors.red,
+```
+- Full Theme Code
+```bash
+import 'package:flutter/material.dart';
+import 'package:hello_world/Pages/home.dart';
+import 'Pages/home.dart';
+
+void main() {
+  runApp(HelloWorld());
+}
+
+class HelloWorld extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Home(),
+      // For Dark Theme UI
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+      // For Light Theme UI ( Default )
+      theme: ThemeData(
+        brightness: Brightness.light,
+        // Change Color of Status Bar
+        primarySwatch: Colors.red,
+      ),
+    );
+  }
+}
 
 ```
+### Routes
