@@ -154,7 +154,7 @@ class HelloWorld extends StatelessWidget {
 ```
 ### Text
 - Styling Text
-- It takes one props called TextStyle()
+- It take props called style,textScaleFactor,textAlign,softWrap.
 ```bash
         title: Text(
           "Home Page",
@@ -164,4 +164,13 @@ class HelloWorld extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+```
+### Routes
+- Routes are defined in the main container like MaterialApp, Material or Scaffold.
+- It takes one callback Function and one Widget.
+```bash
+routes: {
+      "/": (context) => Home(),
+      "/Login": (context) => Login(),
+    }
 ```
