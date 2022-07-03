@@ -77,3 +77,4 @@ class Home extends StatelessWidget {
   }
 }
 ```
+## Day 3 - Routes, Theme & Text
