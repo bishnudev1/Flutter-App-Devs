@@ -48,6 +48,7 @@ class Hello extends StatelessWidget {
 - Run the App by ```flutter run```
 ## Day 2 - Creating Home Page
 - Scaffold : It's a Container of Flutter which wrap the container just like MaterialApp or Material but it contents essential components like Appbar, Drawer, Footer etc.
+- Widget : All items like Text, Icon, Image are Widget. It must returns a value.
 - Drawer : Creates a three-dot navbar automatically
 - Appbar : Creates a status-bar automatically
 ```bash
@@ -77,4 +78,27 @@ class Home extends StatelessWidget {
   }
 }
 ```
-## Day 3 - Routes, Theme & Text
+## Day 3 - Function, Routes, Themes & Text
+### Function
+- Giving { } backets inside Function Parameters means giving params values are not mandetory.
+```bash
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(BasicFunc());
+}
+
+class BasicFunc extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    CarDetails(speed: 90);
+    return Text("Basic Function");
+  }
+
+  CarDetails({int speed = 40, String name = "Audi"}) {
+    print(speed);
+    print(name);
+  }
+}
+
+```
