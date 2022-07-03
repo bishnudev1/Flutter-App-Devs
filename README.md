@@ -1,7 +1,9 @@
 # Flutter-App-Devs
 30 Days of Flutter App Development By Bishnudev Khutia
 
-## Windows Installation
+## Day 1
+
+### Windows Installation
 - Install Git https://git-scm.com/downloads
 - Open Terminal & initialize ```git clone https://github.com/flutter/flutter.git -b stable```
 - Add Path ```flutter\bin``` in Path/Enviroment Variables
@@ -9,7 +11,7 @@
 - Install ```Flutter``` extension in VS Code/Extension
 - Open Terminal & initialize ```flutter doctor``` & check the needs
 
-## Hello World App
+### Hello World App
 - Open VS Code
 - Open Command Palate ```Ctrl+Shift+p```
 - Select ```New Flutter Application``` With Name & Directory
@@ -36,4 +38,4 @@ class Hello extends StatelessWidget {
   }
 }
 ```
-
+## Day 2
