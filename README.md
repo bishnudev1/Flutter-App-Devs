@@ -266,7 +266,7 @@ class MyRoutes {
           MyRoutes.loginRoute: (context) => Login(),
         });
 ```
-- Now Use the route in <b>login.dart</b>
+- Now Use the route in <b>login.dart</b> With Navigator.pushNamed()
 ```bash
                   ElevatedButton(
                     child: Text("Login Now"),
