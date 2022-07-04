@@ -174,3 +174,56 @@ routes: {
       "/Login": (context) => Login(),
     }
 ```
+### Images
+- Config pubspec.yaml and uncomment <b>assets/images/Sample.png</b>
+- Import Image Component 
+- For Open-Source Images Visit https://undraw.co/
+```bash
+      child: Column(
+        children: [
+          Image.asset("assets/images/Education.png",
+          fit: BoxFit.cover,
+          ),
+        ],
+      ),
+```
+### External Fonts
+- For Fonts or Other Flutter Packages Visit https://pub.dev/
+- Search ```google_fonts```
+- Initialize ```flutter pub add google_fonts```
+- This will add a dependencies line like this to your package's pubspec.yaml
+- ```import 'package:google_fonts/google_fonts.dart';```
+- Now use any Google Font like
+```bash
+        theme: ThemeData(
+          fontFamily: GoogleFonts.lato().fontFamily,
+        ),
+```
+- For spacing use <b>SizedBox</b> instead of Padding
+```bash
+SizedBox(
+  height: 20,
+),
+```
+- Or we can wrap the entire container with Padding Widget with each Vertical or Horizentally padding
+```bash
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+            child: Column(),
+            );
+```
+### Text-Input
+- For Password entries obscureText = true so it will hide password while typing
+```bash
+          TextFormField(
+          obscureText: false,
+            decoration: InputDecoration(
+              hintText: "Enter Name...",
+              labelText: "Username",
+            ),
+          ),
+```
+### Buttons
+```bash
+
+```
