@@ -174,6 +174,8 @@ routes: {
       "/Login": (context) => Login(),
     }
 ```
+## Day 4 - TextInput, Buttons, Google Fonts
+
 ### Images
 - Config pubspec.yaml and uncomment <b>assets/images/Sample.png</b>
 - Import Image Component 
@@ -224,6 +226,14 @@ SizedBox(
           ),
 ```
 ### Buttons
+- ElevatedButton must have two props child(includes Text) & onPressed.
 ```bash
-
+                ElevatedButton(
+                  child: Text("Login Now"),
+                  style: TextButton.styleFrom(),
+                  onPressed: () {
+                     print("You have clicked Button");
+                  },
+                ),
 ```
+## Day 5- SingleChildScrollView, Terminal, Navigator
