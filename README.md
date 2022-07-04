@@ -230,10 +230,48 @@ SizedBox(
 ```bash
                 ElevatedButton(
                   child: Text("Login Now"),
-                  style: TextButton.styleFrom(),
+                  style: TextButton.styleFrom(minimumSize: Size(340, 40)),
                   onPressed: () {
                      print("You have clicked Button");
                   },
                 ),
 ```
 ## Day 5- SingleChildScrollView, Terminal, Navigator
+
+### SingleChildScrollView
+- Wrap a Container in SingleChildScrollView and it will be Scorable downwards
+```bash
+child: SingleChildScrollView(
+  child: Container(
+    // Widgets, Text, Buttons etc.
+  ),
+)
+```
+
+### Navigator
+- Create a folder <b>utils</b> in <b>lib</b>
+- Create routes.dart and Initialize the routes
+```bash
+class MyRoutes {
+  static String loginRoute = '/login';
+  static String homeRoute = '/';
+}
+```
+- Set InitialRoute & Routes in <b>main.dart</b>
+```bash
+        return MaterialApp(
+        initialRoute: MyRoutes.loginRoute,
+        routes: {
+          MyRoutes.homeRoute: (context) => Home(),
+          MyRoutes.loginRoute: (context) => Login(),
+        });
+```
+- Now Use the route in <b>login.dart</b>
+```bash
+                  ElevatedButton(
+                    child: Text("Login Now"),
+                    onPressed: () {
+                      Navigator.pushNamed(context, MyRoutes.homeRoute);
+                    },
+                  ),
+```
