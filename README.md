@@ -316,3 +316,105 @@ onChanged: (value){
   setState(() {});
 }
 ```
+### Animated Button With Container();
+- We can create an Animated Button With Container() and InkWell() instead of ElevatedButton().
+- InkWell() gives us onPressed method so we can call any function and we can customize this button.
+- First Create a Container with Proper Height & Width.
+- BoxDecoration() gives us to add Boder-Radius,Background-Color,Box-Shadow and many property in it.
+```bash
+                  Container(
+                    width: 340,
+                    height: 30,
+                    alignment: Alignment.center,
+                    child: Text("Login Now"),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.deepPurple,
+                    ),
+                  ),
+```
+- Now we can wrap it with InkWell()
+- We can use onTap() method to use Navigator() or other callback
+```bash
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, MyRoutes.homeRoute);
+                    },
+                    child: Container(
+                      width: 340,
+                      height: 30,
+                      alignment: Alignment.center,
+                      child: Text("Login Now"),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.deepPurple,
+                      ),
+                    ),
+                  ),
+```
+### Customize Login Button With State & Animation Property
+- Declare a bool variable ```bool ChangeButton = false```
+- Set onTap() funtion to Async & Await
+- Whenever Login Button has been Clicked changeButton will be set to True
+```bash
+onTap: (){
+  setState(() {
+    changeButton = true;
+  });
+}
+```
+- Now using <b>Ternary Operator</b> configure the Border-Radius of Button
+```bash
+borderRadius:
+    BorderRadius.circular(changeButton ? 50 : 8),
+// By default the BoderRadius of Button will be 50px but when someone triggered it, the value will be 8px.
+```
+- Now configure Button Text Property to Icon
+```bash
+changeButton ? Icon(Icons.done) : Text("Login Now"),
+// If someone clicks Button it's innerHTML will changed to Icon from "Login Now" Text.
+```
+- Now Adding Async-Await to onTap() method to perform Delay and Navigate
+```bash
+                    onTap: () async {
+                      setState(() {
+                        changeButton = true;
+                      });
+                      await Future.delayed(Duration(seconds: 2));
+                      Navigator.pushNamed(context, MyRoutes.homeRoute);
+                    },
+await & Future.delayed() sleeps the function for 1 seconds and it will be redirected to Homepage after a seconds.
+```
+- InkWell() Full Code Structure With Styling
+```bash
+                  InkWell(
+                    onTap: () async {
+                      setState(() {
+                        changeButton = true;
+                      });
+                      await Future.delayed(Duration(seconds: 2));
+                      Navigator.pushNamed(context, MyRoutes.homeRoute);
+                    },
+                    child: AnimatedContainer(
+                      duration: Duration(seconds: 2),
+                      width: changeButton ? 50 : 150,
+                      height: 30,
+                      alignment: Alignment.center,
+                      child: changeButton
+                          ? Icon(Icons.done)
+                          : Text(
+                              "Login Now",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: 15,
+                              ),
+                            ),
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(changeButton ? 50 : 8),
+                        color: Colors.deepPurple,
+                      ),
+                    ),
+                  ),
+```
