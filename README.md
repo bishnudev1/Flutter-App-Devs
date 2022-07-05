@@ -277,3 +277,42 @@ class MyRoutes {
 ```
 ## Day 6 - State Management, Animated Container
 ### State Change in Login Form Using StatefulWidget
+- Convert StatelessWidget to StatefulWidget ( It takes 2 classes )
+```bash
+class Login extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Material();
+  }
+}
+//This is a Stateless Widget having Single Class
+```
+```bash
+class Login extends StatefulWidget {
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  @override
+  Widget build(BuildContext context) {
+    return Material();
+  }
+}
+//This is a StatefulWidget having Two Classes
+```
+- Now Define an empty String for Username ```String name = "";```
+- Give TextFormField a props called ```onChanged```. It takes one callback.
+```bash
+onChanged: (value){
+  name = value;
+}
+```
+- Now use the name value by ```Text("Welcome : ${name}"),```
+- Without calling the build() method we can re-render the page by ```setState(() {});``` in onChanged. It's a good practice
+```bash
+onChanged: (value){
+  name = value;
+  setState(() {});
+}
+```
