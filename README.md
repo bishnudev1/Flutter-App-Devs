@@ -418,3 +418,5 @@ await & Future.delayed() sleeps the function for 1 seconds and it will be redire
                     ),
                   ),
 ```
+## Day 7 - QnA Session
+## Day 8 - Form Validation in Flutter
