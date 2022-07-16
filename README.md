@@ -1,4 +1,4 @@
-# Flutter-App-Devs
+# Flutter-Complete-Resource
 30 Days of Flutter App Development By Bishnudev Khutia
 
 ## Day 1 - Introduction
