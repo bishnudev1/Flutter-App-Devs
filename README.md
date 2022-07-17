@@ -513,3 +513,35 @@ child: ListView(
             )
 ```
 ## Day 10 - Models, AppBar Theme
+### Customizing AppBar Theme in Flutter
+- Create a Seperate Folder <b>themes.dart</b> in <b>utils</b>
+- Create a Class where all Flutter Themes will be stored
+```bash
+class MyTheme{
+  static ThemeData __themeName__(BuildContext context) => ThemeData(__themeCode__)
+}
+```
+- For now we have two themes
+```bash
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class MyTheme {
+  static ThemeData lightTheme(BuildContext context) => ThemeData(
+        primarySwatch: Colors.deepPurple,
+        appBarTheme: AppBarTheme(
+          color: Colors.white,
+          elevation: 0.0,
+          iconTheme: IconThemeData(color: Colors.black),
+        ),
+        fontFamily: GoogleFonts.lato().fontFamily,
+      );
+
+  static ThemeData darkTheme(BuildContext context) => ThemeData(
+        brightness: Brightness.dark,
+      );
+}
+```
+- Import it on <b>main.dart</b>
+``` import 'package:hello_world/utils/themes.dart'; ```
+- Use it ``` theme: MyTheme.lightTheme(context), ```
