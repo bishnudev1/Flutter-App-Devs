@@ -419,6 +419,7 @@ await & Future.delayed() sleeps the function for 1 seconds and it will be redire
                   ),
 ```
 ## Day 7 - QnA Session
+### Question and Answers will be uploaded soon.
 ## Day 8 - Form Validation in Flutter
 - Initialize a Form Key ``` final _formkey = GlobalKey<FormState>(); ```
 - Wrapping The <b>Container</b> - which contains Text-Input, Buttons, Checkbox etc into <b>Form</b> & Add key 
