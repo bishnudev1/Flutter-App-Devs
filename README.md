@@ -574,3 +574,36 @@ final products = [
 ];
 ```
 ## Day 11 - BuildContext, 3 Trees & Constraints
+### Constraints
+1) In Flutter, widgets are rendered by their underlying RenderBox objects. Render boxes are given constraints by their parent, and size themselves within those constraints. Constraints consist of minimum and maximum widths and heights; sizes consist of a specific width and height.
+2) Generally, there are three kinds of boxes, in terms of how they handle their constraints:
+- Those that try to be as big as possible. For example, the boxes used by Center and ListView.
+- Those that try to be the same size as their children. For example, the boxes used by Transform and Opacity.
+- Those that try to be a particular size. For example, the boxes used by Image and Text.
+```bash
+        child: Container(
+          height: 100,
+          width: 100,
+          child: Container(
+            height: 50,
+            width: 50,
+            color: Colors.deepOrange,
+          ),
+        ),
+        // Due to Constraints the 2nd Container always use the 1st Container Height & Width as Default.
+```
+- Apply Constraints ``` constraints : BoxConstraints(), ```
+- Now it will check wheather the height and width of 2nd Box ( Child Box ) is in between Parent Box. If yes then it will render height and width of 2nd Box otherwise it will render Parent ( 1st Box ) height and width.
+```bash
+        child: Container(
+          constraints: BoxConstraints(
+              minHeight: 70, maxHeight: 200, minWidth: 70, maxWidth: 200),
+          child: Container(
+            height: 150,
+            width: 150,
+            color: Colors.deepOrange,
+          ),
+        ),
+        // In this case this is true.
+```
+## Day 12 - ListView Builder, List Generate, Card & Asserts
