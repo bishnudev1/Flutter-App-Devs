@@ -420,3 +420,42 @@ await & Future.delayed() sleeps the function for 1 seconds and it will be redire
 ```
 ## Day 7 - QnA Session
 ## Day 8 - Form Validation in Flutter
+- Initialize a Form Key ``` final _formkey = GlobalKey<FormState>(); ```
+- Wrapping The <b>Container</b> - which contains Text-Input, Buttons, Checkbox etc into <b>Form</b> & Add key 
+```bash
+child: Form(
+  key: _formkey,
+  child: Padding(
+      TextFormField(),
+      ElevatedButton(),
+    ),
+),
+```
+-  Add validator in TextFormField
+```bash
+validator: (value){
+  if(value == ''){
+    return "Username can not be empty";
+  }
+  return null; -> Returns null means it contains some data & it's mandatory
+},
+```
+- Add a user-defined method on onTap() in Inkwell()
+```bash
+onTap: () => loginData(context),
+```
+- Declare the method with validation and navigation
+```bash
+  loginData(BuildContext context) async {
+    if (_formkey.currentState!.validate()) {
+      setState(() {
+        changeButton = true;
+      });
+      await Future.delayed(Duration(seconds: 2));
+      await Navigator.pushNamed(context, MyRoutes.homeRoute);
+      setState(() {
+        changeButton = false;
+      });
+    }
+  }
+```
