@@ -459,3 +459,39 @@ onTap: () => loginData(context),
     }
   }
 ```
+## Day 9 - Drawer Customization
+- It's mainly a Stateless Widget
+- It contains <b>ListView</b> Props as a Child
+- It takes a <b>DrawerHeader</b> as a Children, <b>DrawerHeader</b> takes Admin Details like  ```accountName```, ```accountEmail```, ```currentAccountPicture``` etc.
+### How to set Admin Name in Drawer
+```bash
+return Drawer(
+  child: ListView(
+    children: [
+      DrawerHeader(
+        child: UserAccountsDrawerHeader(
+          accountName: Text("Bishnudev Khutia"),
+          accountEmail: Text("Bishnudevkhutia20@gmail.com"),
+          currentAccountPicture: CircleAvatar(
+            backgroundImage: NetworkImage("Link of the image"),
+          ),
+        ),
+      ),
+    ],
+  ),
+);
+```
+- You can starred the Padding and Margin to zero so that it can't take extra UI in our Mobile screen.
+```bash
+child: ListView(
+  padding: EdgeInsets.zero,
+  children: [
+    DrawerHeader(
+      padding: EdgeInsets.zero,
+         child: UserAccountsDrawerHeader(
+            margin: EdgeInsets.zero,
+         ),
+    )],
+  ),
+),
+```
