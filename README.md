@@ -781,3 +781,33 @@ loadData() async{
 ```
 
 ## Day 16 - GridView | GridTile
+
+### Converting our Card Items <b>ListView</b> to <b>GridView</b>
+- It's optional and just to increase UI/UX of App
+- it takes few props just like <b>GridTile</b> (Main Props) <b>ListView</b> 1) itemCount 2) itemBuilder 3)gridDebate(Set how many row-columns should be there)
+- It must returns one Child <b>GridTile</b> which has <b>header</b>, <b>child</b> (We can attach Image with Child) and <b>footer</b>
+- Full GridView Code Without Any Styles
+```bash
+        child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
+                itemCount: CatalogModel.items.length,
+                itemBuilder: (context, index) {
+                  final item = CatalogModel.items[index];
+                  return Card(
+                      child: GridTile(
+                        header:
+                            child: Text(
+                              item.name
+                              ),
+                            )),
+                        child: Image.network(item.image),
+                        footer:
+                            child: Text(
+                              item.price.toString(),
+                              ),
+                            )),
+                      ));
+                })
+```
+- Wrapping it with <b>card</b> will give contain-size = border-box ability.
