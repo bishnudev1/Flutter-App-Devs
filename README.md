@@ -551,28 +551,36 @@ class MyTheme {
 - Declaring Schemas
 ```bash
 class Item {
-  final String id;
+  final int id;
   final String name;
   final String desc;
   final num price;
   final String color;
   final String image;
 
-  Item({this.id, this.name, this.desc, this.price, this.color, this.image});
+  Item(
+      {required this.id,
+      required this.name,
+      required this.desc,
+      required this.price,
+      required this.color,
+      required this.image});
 }
 ```
 - Creating a Model
 ```bash
-final products = [
-  Item(
-      id: "Codepur001",
-      name: "iPhone 12 Pro",
-      desc: "Apple iPhone 12th generation",
-      price: 999,
-      color: "#33505a",
-      image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRISJ6msIu4AU9_M9ZnJVQVFmfuhfyJjEtbUm3ZK11_8IV9TV25-1uM5wHjiFNwKy99w0mR5Hk&usqp=CAc")
-];
+class CatalogModel {
+  static final items = [
+    Item(
+        id: 1,
+        name: "iPhone 12 Pro",
+        desc: "Apple iPhone 12th generation",
+        price: 999,
+        color: "#33505a",
+        image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRISJ6msIu4AU9_M9ZnJVQVFmfuhfyJjEtbUm3ZK11_8IV9TV25-1uM5wHjiFNwKy99w0mR5Hk&usqp=CAc")
+  ];
+}
 ```
 ## Day 11 - BuildContext, 3 Trees & Constraints
 ### Constraints
@@ -608,3 +616,44 @@ final products = [
         // In this case this is true.
 ```
 ## Day 12 - ListView Builder, List Generate, Card & Asserts
+### Showing Cart Items in Home Page
+- Creating an ItemWidget file in <b>utils</b>
+- Declaring values to ModelSchema <b>Models</b>
+```bash
+class ItemWidget extends StatelessWidget {
+  final Item item;
+
+  const ItemWidget({super.key, required this.item});
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Image.network(item.image),
+    );
+  }
+}
+```
+- Showing ItemWidget data in <b>Home</b> with ``` ListView.builder ``` method
+- <b>builder</b> should has two props 1)itemCount 2)itemBuilder & it will return <b>ItemWidget</b> which we created in <b>widgets</b>
+- Import ItemWidget ``` import '../widgets/item_widget.dart'; ```
+```bash
+      body: ListView.builder(
+        itemCount: CatalogModel.items.length,
+        itemBuilder: (context, index) {
+          return ItemWidget(item: CatalogModel.items[index]);
+        },
+      ),
+```
+
+### Showing Same Items in a Loop
+- Creating copies of CatalogModel Items ``` final dummyList = List.generate(25, (index) => CatalogModel.items[0]); ```
+- Showing all 25 same items in Home
+```bash
+ListView.builder(
+          // itemCount: CatalogModel.items.length,
+          itemCount: dummyList.length,
+          itemBuilder: (context, index) {
+            return ItemWidget(item: dummyList[index]);
+          },
+        ),
+```
+## Day 13 - Local Files | Load & Decode JSON

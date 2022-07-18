@@ -14,6 +14,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dummyList = List.generate(25, (index) => CatalogModel.items[0]);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -21,11 +22,15 @@ class Home extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: ListView.builder(
-        itemCount: CatalogModel.items.length,
-        itemBuilder: (context, index) {
-          return ItemWidget(item: CatalogModel.items[index]);
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView.builder(
+          // itemCount: CatalogModel.items.length,
+          itemCount: dummyList.length,
+          itemBuilder: (context, index) {
+            return ItemWidget(item: dummyList[index]);
+          },
+        ),
       ),
       drawer: MyDrawer(),
     );
