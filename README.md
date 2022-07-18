@@ -418,7 +418,7 @@ await & Future.delayed() sleeps the function for 1 seconds and it will be redire
                     ),
                   ),
 ```
-## Day 7 - QnA Session
+## Day 7 - QnA Session 1
 ### Question and Answers will be uploaded soon.
 ## Day 8 - Form Validation in Flutter
 - Initialize a Form Key ``` final _formkey = GlobalKey<FormState>(); ```
@@ -657,3 +657,127 @@ ListView.builder(
         ),
 ```
 ## Day 13 - Local Files | Load & Decode JSON
+### Creating JSON Datas & Giving Permisions
+- Create a new file <b>catalog.json</b> in <b>Assets/files</b> and add JSON datas for model items
+```bash
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "iPhone 12 Pro",
+            "desc": "Apple iPhone 12th generation",
+            "price": 999,
+            "color": "#33505a",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRISJ6msIu4AU9_M9ZnJVQVFmfuhfyJjEtbUm3ZK11_8IV9TV25-1uM5wHjiFNwKy99w0mR5Hk&usqp=CAc"
+        },
+}
+```
+- Open <b>pubspec.yaml</b> and add files folder in it
+```bash
+  assets:
+    - assets/files/
+```
+- We need to convert <b>Home</b> from <b>Stateless</b> to <b>Stateful</b> widget
+- Initialize <b>init</b> constructor ( Works similiar like <b>useEffect</b> in React)
+```bash
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+```
+- Now declare a user-defined function <b>loadData()</b> to fetch data from <b>catalog.json</b>
+```bash
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+```
+- <b>rootBundle</b> helps us to get the data from a file & <b>loadString</b> converts it to a String
+- <b>jsonDecode</b> -> Convert it to non-json object
+```bash
+  loadData() async {
+    var catalogJson = await rootBundle.loadString("files/catalog.json");
+    var decodedData = jsonDecode(catalogJson);
+    var productsData = decodedData["products"];
+  }
+```
+## Day 14 - QnA Session 2
+
+## Day 15 - JSON Mapping | Data Class Generator | ProgressIndicator
+
+### Creating Data Classes for Item Models
+- Open VS Code Extensions
+- Search & Install ``` Dart Data Class Generator ```
+- Open Model/catalog.dart
+- Press ``` ctrl+shift+p ``` -> Data Class Generator -> By Class -> Select
+
+### Displaying All Cart Items by JSON Mapping
+- Create two data class 1) <b>fromMap</b> 2) <b>toMap</b> in ``` Item Constructor ``` <b>models/catalog.dart</b>
+```bash
+  // fromMap() -> Fetched the data from Frontend to Backend
+  factory Item.fromMap(Map<String, dynamic> map) {
+    return Item(
+      id: map['id'],
+      name: map['name'],
+      desc: map['desc'],
+      price: map['price'],
+      color: map['color'],
+      image: map['image'],
+    );
+  }
+  //toMap() -> Get the data from Backend to Frontend
+    toMap() => {
+        "id": id,
+        "name": name,
+        "desc": desc,
+        "price": price,
+        "color": color,
+        "image": image,
+      };
+```
+- Make ``` static final items ``` to ``` static List<Item> items ```
+- Fetching the data in <b>loadData</b> Function in <b>Home</b>
+```bash
+loadData() async{
+  // Previous Code -> To get datas from catalog.json file
+    var catalogJson = await rootBundle.loadString("files/catalog.json");
+    var decodedData = jsonDecode(catalogJson);
+    var productsData = decodedData["products"];
+
+    // Fetching datas from catalog.dart model to Home
+    CatalogModel.items = List.from(productsData)
+        .map<Item>((item) => Item.fromMap(item))
+        .toList();
+    setState(() {});
+}
+```
+- Render the data in <b>Home</b> by ``` CatalogModel.items ``` by <b>itemCount</b> & <b>itemBuilder</b> props
+```bash
+        child: ListView.builder(
+          itemCount: CatalogModel.items.length,
+          itemBuilder: (context, index) {
+            return ItemWidget(item: CatalogModel.items[index]);
+          },
+        ),
+```
+### Adding Circular Progress Indicator
+- The Indicator will keep flashing in Main(Home) Screen until all Cart items are loaded.
+- Use it ``` child: CircularProgressIndicator(), ```
+- Import it using Ternary Operator in <b>Home/body</b>
+```bash
+        child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+            ? ListView.builder(
+                // itemCount: CatalogModel.items.length,
+                itemCount: CatalogModel.items.length,
+                itemBuilder: (context, index) {
+                  return ItemWidget(item: CatalogModel.items[index]);
+                },
+              )
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
+```
+
+## Day 16 - GridView | GridTile
